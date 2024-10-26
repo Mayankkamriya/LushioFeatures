@@ -1,0 +1,16 @@
+.home-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    min-height: 100vh;
+}
+.home-btn-container button{
+width: 200px;
+height: 65px;
+background: black;
+color: white;
+border-radius: 15%;
+font-size: 1.2cqi;
+}
+
