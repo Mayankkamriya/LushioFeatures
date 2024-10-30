@@ -12,7 +12,7 @@ const Home = () => {
        <button  onClick={()=>navigate("./postalPinCode")}>  postalPinCode</button>
 
        <button  onClick={()=>navigate("./AddressSelector")}>  AddressSelector</button>
-       <button  onClick={()=>navigate("./Newproject")}>  Newproject</button>
+       <button  onClick={()=>navigate("./EmailForm")}>  SendEmail</button>
     </div>
   
        )}
