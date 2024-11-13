@@ -4,6 +4,7 @@ import Home from './Home/Home';
 import AddressSelector from './AddressSelector/AddressSelector';
 import PostalPinCode from './postalPinCode/postalPinCode';
 import EmailForm from './sendEmail/EmailForm';
+import FillStar from './FillStar/fillstar';
 const App = () => {
   return (
     <Router>
@@ -14,6 +15,7 @@ const App = () => {
           <Route path="/postalPinCode" element={<PostalPinCode />} />
           <Route path="/AddressSelector" element={<AddressSelector />} />
           <Route path="/EmailForm" element={<EmailForm />} />
+          <Route path="/fillstar" element={<FillStar/>} />
         </Routes>
       </div>
     </Router>

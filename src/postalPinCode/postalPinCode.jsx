@@ -5,13 +5,16 @@ const PanCodeLookup = () => {
   const [locationInfo, setLocationInfo] = useState({ district: "", state: "" });
   const [customDistrict, setCustomDistrict] = useState(""); // State for custom district
   const [error, setError] = useState(""); // State for error messages
+  const [cityOptions, setCityOptions] = useState([]); // State to hold cities from API
+  const [selectedCity, setSelectedCity] = useState(""); // State for selected city
 
   useEffect(() => {
     if (panCode.length === 6) {
       fetchDistrictAndState(panCode);
     } else {
-      // Reset locationInfo and error if the input is not 6 digits
+      // Reset locationInfo, cityOptions, and error if the input is not 6 digits
       setLocationInfo({ district: "", state: "" });
+      setCityOptions([]);
       setError("");
     }
   }, [panCode]);
@@ -23,27 +26,40 @@ const PanCodeLookup = () => {
         throw new Error("Network response was not ok");
       }
       const data = await response.json();
-      
+
       if (data && data[0] && data[0].Status === "Success") {
-        setLocationInfo({
-          district: data[0].PostOffice[0].District,
-          state: data[0].PostOffice[0].State,
-        });
+        const postOffices = data[0].PostOffice || [];
+        setCityOptions(postOffices); // Set city options from PostOffice array
+        const district = postOffices[0]?.District || "";
+        const state = postOffices[0]?.State || "";
+
+        setLocationInfo({ district, state });
+
+        // Check if district name exists in city options, and if so, set it as default
+        const districtInCityOptions = postOffices.find(
+          (city) => city.Name.toLowerCase() === district.toLowerCase()
+        );
+
+        if (districtInCityOptions) {
+          setSelectedCity(districtInCityOptions.Name); // Set district as the default selected city
+        } else {
+          setSelectedCity(postOffices[0]?.Name || ""); // Default to the first city if district not found
+        }
+
         setError(""); // Clear any previous error message
       } else {
-        setLocationInfo({ district: "", state: "" }); // Reset information
-        setError("Invalid PIN code. Please try again."); // Set error message
+        setLocationInfo({ district: "", state: "" });
+        setCityOptions([]); // Reset city options if invalid PIN code
+        setError("Invalid PIN code. Please try again.");
       }
     } catch (error) {
       console.error("Error fetching district and state:", error.message);
-      setError("Error fetching data. Please try again."); // Set error message
+      setError("Error fetching data. Please try again.");
     }
   };
 
-  // Handle custom district input change
   const handleCustomDistrictChange = (e) => {
     setCustomDistrict(e.target.value);
-    // Set the district to the custom value
     setLocationInfo((prev) => ({ ...prev, district: e.target.value }));
   };
 
@@ -57,20 +73,44 @@ const PanCodeLookup = () => {
         maxLength={6}
       />
       {error && <p style={{ color: "red" }}>{error}</p>} {/* Display error message */}
+
       {panCode.length === 6 && !error && (
         <div>
           <label htmlFor="">District:</label>
           <input
             type="text"
             value={locationInfo.district}
-            onChange={handleCustomDistrictChange} // Update the district based on custom input
+            onChange={handleCustomDistrictChange}
           />
           <label htmlFor="">State:</label>
           <input
-            type="text" 
+            type="text"
             value={locationInfo.state}
-            onChange={(e) => setLocationInfo((prev) => ({ ...prev, state: e.target.value }))} // Allow state to be set manually as well
+            onChange={(e) => setLocationInfo((prev) => ({ ...prev, state: e.target.value }))}
           />
+
+          {/* Dropdown for selecting city */}
+          <div>
+            <label htmlFor="city">City:</label>
+            <select
+              id="city"
+              value={selectedCity}
+              onChange={(e) => setSelectedCity(e.target.value)}
+            >
+              {cityOptions.map((city, index) => (
+                <option key={index} value={city.Name}>
+                  {city.Name}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Display the selected city */}
+          {selectedCity && (
+            <p>
+              Selected City: <strong>{selectedCity}</strong>
+            </p>
+          )}
         </div>
       )}
     </div>
