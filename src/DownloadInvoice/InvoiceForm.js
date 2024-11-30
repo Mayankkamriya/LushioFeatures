@@ -12,7 +12,7 @@ const InvoiceForm = ({ invoiceData, setInvoiceData }) => {
       <h2>Invoice Form</h2>
 
       <div className="form-group">
-        <label>Client Name:</label>
+        <label>Client Name: </label>
         <input
           type="text"
           name="clientName"
@@ -40,6 +40,17 @@ const InvoiceForm = ({ invoiceData, setInvoiceData }) => {
           name="date"
           value={invoiceData.date}
           onChange={handleChange}
+        />
+      </div>
+
+      <div className="form-group">
+        <label>Ship_To</label>
+        <input
+          type="text"
+          name="Ship_To"
+          value={invoiceData.Ship_To}
+          onChange={handleChange}
+          placeholder="Enter Ship_To Name"
         />
       </div>
     </form>
