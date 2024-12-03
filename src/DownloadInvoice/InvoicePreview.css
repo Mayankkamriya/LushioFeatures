@@ -1,8 +1,8 @@
 
 @media print {
   .invoice-preview {
-    width: 70%;
-    min-height: 70%;
+    width: 100%;
+    min-height: 100%;
     box-shadow: none;
   }}
 /* perfect without border */
@@ -12,7 +12,7 @@
   border-radius: 10px; 
   width: 210mm;  
   min-height: 297mm;
-  width: 100%;
+  width: 90%;
   border: 1px solid #ccc;
   padding: 20px;
   font-family: Arial, sans-serif;
@@ -52,7 +52,7 @@ h3 {
 }
 
 .invoice-table {
-  width: 80%;
+  width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
 }
@@ -70,6 +70,7 @@ h3 {
 
 .terms-and-conditions p {
   margin: 5px 0;
+
 }
 
 
