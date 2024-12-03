@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 const PanCodeLookup = () => {
   const [panCode, setPanCode] = useState("");
   const [locationInfo, setLocationInfo] = useState({ district: "", state: "" });
-  const [customDistrict, setCustomDistrict] = useState(""); // State for custom district
+  const [ setCustomDistrict] = useState(""); // State for custom district
   const [error, setError] = useState(""); // State for error messages
   const [cityOptions, setCityOptions] = useState([]); // State to hold cities from API
   const [selectedCity, setSelectedCity] = useState(""); // State for selected city
