@@ -6,6 +6,9 @@ import PostalPinCode from './postalPinCode/postalPinCode';
 import EmailForm from './sendEmail/EmailForm';
 import FillStar from './FillStar/fillstar';
 import InvoiceDownload from "./DownloadInvoice/InvoiceDownload";
+import PopupUse from './responsive-popup/popupUse';
+
+import Quantitychange from './quantitychange/quantitychange';
 const App = () => {
   return (
     <Router>
@@ -18,6 +21,8 @@ const App = () => {
           <Route path="/EmailForm" element={<EmailForm />} />
           <Route path="/fillstar" element={<FillStar/>} />
           <Route path="/DownloadInvoice" element={<InvoiceDownload/>} />
+          <Route path="/popupUse" element={<PopupUse/>} />
+          <Route path="/quantitychange" element={<Quantitychange/>} />
         </Routes>
       </div>
     </Router>

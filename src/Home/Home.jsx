@@ -6,7 +6,7 @@ import "./Home.css"
 const Home = () => {
     const navigate = useNavigate()
   return (
-    <div className='home-btn-container'>
+    <div className='home-btn-container '>
 
 
        <button  onClick={()=>navigate("./postalPinCode")}>  postalPinCode</button>
@@ -15,7 +15,9 @@ const Home = () => {
        <button  onClick={()=>navigate("./EmailForm")}>  SendEmail</button>
        <button  onClick={()=>navigate("./fillstar")}>  FillStar</button>
        <button  onClick={()=>navigate("./DownloadInvoice")}>  DownloadInvoice</button>
-
+       
+       <button  onClick={()=>navigate("./popupUse")}>  ResponsivePopup</button>
+       <button  onClick={()=>navigate("./quantitychange")}>  Quantitychange</button>
     </div>
   
        )}

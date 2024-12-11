@@ -1,5 +1,6 @@
 .home-btn-container {
     display: flex;
+
     justify-content: center;
     align-items: center;
     gap: 20px;
@@ -14,3 +15,13 @@ border-radius: 15%;
 font-size: 1.2cqi;
 }
 
+@media( max-width: 500px
+    ){
+        .home-btn-container {
+            flex-direction: column;
+        }
+        .home-btn-container button{
+            font-size: 13px;
+            height: 50px;
+        }
+    }
