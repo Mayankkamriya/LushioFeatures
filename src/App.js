@@ -4,6 +4,7 @@ import Home from './Home/Home';
 import AddressSelector from './AddressSelector/AddressSelector';
 import PostalPinCode from './postalPinCode/postalPinCode';
 import EmailForm from './sendEmail/EmailForm';
+import SendEmailer from './sendEmailer/sendEmailer';
 import FillStar from './FillStar/fillstar';
 import InvoiceDownload from "./DownloadInvoice/InvoiceDownload";
 import PopupUse from './responsive-popup/popupUse';
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="/DownloadInvoice" element={<InvoiceDownload/>} />
           <Route path="/popupUse" element={<PopupUse/>} />
           <Route path="/quantitychange" element={<Quantitychange/>} />
+          <Route path="/sendEmail" element={<SendEmailer/>}/>
         </Routes>
       </div>
     </Router>

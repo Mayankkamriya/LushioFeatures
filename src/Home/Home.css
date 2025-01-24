@@ -1,5 +1,51 @@
 .home-btn-container {
     display: flex;
+    flex-wrap: wrap; /* Allows wrapping to create rows */
+    justify-content: center; /* Centers the buttons horizontally */
+    align-items: center; /* Centers vertically if extra space */
+    gap: 20px; /* Space between buttons */
+    min-height: 90vh;
+}
+
+/* Style for the buttons */
+.home-btn-container button {
+    width: 185px;
+    height: 60px;
+    background: black;
+    color: white;
+    border-radius: 15%;
+    font-size: 1.1rem;
+}
+
+/* For laptop view (1024px and above) */
+@media (min-width: 1024px) {
+    .home-btn-container {
+        max-width: 800px; /* Adjust container width as needed */
+        margin: 0 auto; /* Center the container */
+    }
+
+    .home-btn-container button {
+        flex: 1 0 calc(15% - 20px); /* 25% width minus the gap to fit 4 buttons in a row */
+    }
+}
+
+/* For mobile view (below 500px) */
+@media (max-width: 500px) {
+    .home-btn-container {
+        flex-direction: column; /* Stacks buttons vertically */
+    }
+
+    .home-btn-container button {
+        font-size: 17px;
+        height: 50px;
+        width: 50%; /* Full width for mobile */
+        /* border-radius: 15%; */
+    }
+}
+
+
+/* .home-btn-container {
+    display: flex;
 
     justify-content: center;
     align-items: center;
@@ -24,4 +70,4 @@ font-size: 1.2cqi;
             font-size: 13px;
             height: 50px;
         }
-    }
+    } */

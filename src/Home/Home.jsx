@@ -18,6 +18,7 @@ const Home = () => {
        
        <button  onClick={()=>navigate("./popupUse")}>  ResponsivePopup</button>
        <button  onClick={()=>navigate("./quantitychange")}>  Quantitychange</button>
+       <button  onClick={()=>navigate("./sendEmail")}>  send Email</button>
     </div>
   
        )}
